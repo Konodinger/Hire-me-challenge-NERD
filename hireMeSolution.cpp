@@ -115,7 +115,7 @@ int main(int argc, char* argv[])
     reverseIndexList reverseConf1, reverseConf2;
     preTreatConfusion(reverseConf1, reverseConf2);
 
-    BackwardAnalysis(reverseConf1, reverseConf2, 300);
+    // BackwardAnalysis(reverseConf1, reverseConf2, 300);
 
     
     word outputRef = "Hire me!!!!!!!!";
@@ -125,17 +125,17 @@ int main(int argc, char* argv[])
     initWord(output);
     
 
-    // auto refClock = clock();
-    // if (!Backward(inputDecrypted, outputRefCopy, reverseConf1, reverseConf2)) {
-    //     cout << "The backward pass failed..." << endl;
-    // }
-    // cout << "Time: " << (float)(clock() - refClock) / CLOCKS_PER_SEC << endl;
+    auto refClock = clock();
+    if (!Backward(inputDecrypted, outputRefCopy, reverseConf1, reverseConf2)) {
+        cout << "The backward pass failed..." << endl;
+    }
+    cout << "Time: " << (float)(clock() - refClock) / CLOCKS_PER_SEC << endl;
     
-    // crypt(inputDecrypted, output, true);
-    // cout << (compareHalf(outputRef, output) ? "Success!" : "Failure") << endl;
-    // printHalf("Reference:", outputRef);
-    // printWord("Solution:", inputDecrypted);
-    // printHalf("Result:   ", output);
+    crypt(inputDecrypted, output, true);
+    cout << (compareHalf(outputRef, output) ? "Success!" : "Failure") << endl;
+    printHalf("Reference:", outputRef);
+    printWord("Solution:", inputDecrypted);
+    printHalf("Result:   ", output);
     
-    // return memcmp(outputRef,output,16);
+    return memcmp(outputRef,output,16);
 }
